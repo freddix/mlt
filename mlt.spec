@@ -1,7 +1,7 @@
 Summary:	MLT - Media Lovin' Toolkit
 Name:		mlt
 Version:	0.8.2
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://downloads.sourceforge.net/mlt/%{name}-%{version}.tar.gz
@@ -10,13 +10,13 @@ Patch0:		%{name}-ffmpeg.patch
 URL:		http://www.mltframework.org/
 BuildRequires:	ImageMagick-coders
 BuildRequires:	SDL-devel
-BuildRequires:	ffmpeg-devel
 BuildRequires:	frei0r-devel
 BuildRequires:	gtk+-devel
 BuildRequires:	jack-audio-connection-kit-devel
 BuildRequires:	ladspa-devel
 BuildRequires:	ladspa-devel
 BuildRequires:	lame-libs-devel
+BuildRequires:	libav-devel
 BuildRequires:	libmad-devel
 BuildRequires:	libsamplerate-devel
 BuildRequires:	libvorbis-devel
@@ -70,7 +70,6 @@ sed -i 's|-Wall|-Wall %{rpmcxxflags}|g' src/mlt++/configure
 %configure \
 	--avformat-shared=%{_prefix}	\
 	--avformat-swscale	\
-	--avformat-vdpau	\
 	--disable-qimage	\
 	%ifarch %{ix86}
 	--disable-sse2		\
