@@ -1,11 +1,11 @@
 Summary:	MLT - Media Lovin' Toolkit
 Name:		mlt
-Version:	0.8.2
-Release:	3
+Version:	0.8.8
+Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://downloads.sourceforge.net/mlt/%{name}-%{version}.tar.gz
-# Source0-md5:	c7a8c4ca7485bb615cbcf851d8742a1c
+# Source0-md5:	06de4052cffd6760c468d7da9557edae
 Patch0:		%{name}-ffmpeg.patch
 URL:		http://www.mltframework.org/
 BuildRequires:	ImageMagick-coders
@@ -62,9 +62,8 @@ MLT python module.
 
 %prep
 %setup -q
-%patch0 -p1
 
-sed -i 's|-Wall|-Wall %{rpmcxxflags}|g' src/mlt++/configure
+%{__sed} -i 's|-Wall|-Wall %{rpmcxxflags}|g' src/mlt++/configure
 
 %build
 %configure \
