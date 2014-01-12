@@ -1,22 +1,22 @@
 Summary:	MLT - Media Lovin' Toolkit
 Name:		mlt
-Version:	0.8.8
+Version:	0.9.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://downloads.sourceforge.net/mlt/%{name}-%{version}.tar.gz
-# Source0-md5:	06de4052cffd6760c468d7da9557edae
+# Source0-md5:	1cd2d73f3ffe77a43980e99aaa4ea06c
 Patch0:		%{name}-ffmpeg.patch
 URL:		http://www.mltframework.org/
 BuildRequires:	ImageMagick-coders
 BuildRequires:	SDL-devel
+BuildRequires:	ffmpeg-devel
 BuildRequires:	frei0r-devel
 BuildRequires:	gtk+-devel
 BuildRequires:	jack-audio-connection-kit-devel
 BuildRequires:	ladspa-devel
 BuildRequires:	ladspa-devel
 BuildRequires:	lame-libs-devel
-BuildRequires:	libav-devel
 BuildRequires:	libmad-devel
 BuildRequires:	libsamplerate-devel
 BuildRequires:	libvorbis-devel
@@ -64,6 +64,7 @@ MLT python module.
 %setup -q
 
 %{__sed} -i 's|-Wall|-Wall %{rpmcxxflags}|g' src/mlt++/configure
+%{__sed} -i "s|<freetype/|<|" src/modules/gtk2/producer_pango.c
 
 %build
 %configure \
